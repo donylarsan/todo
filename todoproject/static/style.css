@@ -1,0 +1,14 @@
+.banner {
+background: linear-gradient(to bottom right, #33ccff 20%, #E4EE1F 80%);
+width:100%;
+height:200px;
+margin-bottom:50px;
+}
+.bannertext{
+position: absolute;
+width:100%;
+text-align: center;
+color:blue;
+font-family:serif;
+font-size:100px;
+}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="bannertext" style="font-family: serif;font-size:100px;">
+                    <b>My To Do List</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        <form method="POST" class="p-3 shadow" >
+        {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control" name="task" placeholder="Enter the task">
+            </div><br>
+            <div class="form-group">
+                <input type="text" class="form-control" name="prio" placeholder="Priority">
+            </div><br>
+            <div class="form-group" >
+                <input type="date" class="form-control" name="date" placeholder="Enter the date">
+            </div><br>
+            <input type="submit" class="btn btn-success">
+        </form>
+        </div><br>
+
+        <div class="col-md-6">
+            <h3>Task To Be Completed</h3>
+            {% for i in tk %}
+            <div class="shadow card ">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.name}}</h5>
+                    <p>{{i.prio}}</p>
+                    <p>{{i.date}}</p>
+                    <a class="btn btn-danger" href="{% url 'cbvdelete' i.id %}">Done</a>
+                    <a class="btn btn-success" href="{% url 'cbvUpdate' i.id %}">Update</a>
+                </div>
+            </div><br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
